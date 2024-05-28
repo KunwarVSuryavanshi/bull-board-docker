@@ -1,10 +1,12 @@
+#### (Since deadly bullboard is not maintained now, this repo contains the `5.6.0` version of bullboard/ui and bullboard/api changes 🎉, along with that some ui configs options are added as env variable which enables ui to be configured ✨)
+
 Docker image for [bull-board]. Allow you to monitor your bull queue without any coding!
 
 Supports both: bull and bullmq. bull-board version v3.2.6
 
 ### Quick start with Docker
 ```
-docker run -p 3000:3000 deadly0/bull-board
+docker run -p 3000:3000 kunwarsaab/bull-board
 ```
 will run bull-board interface on `localhost:3000` and connect to your redis instance on `localhost:6379` without password.
 
@@ -17,7 +19,7 @@ version: '3.5'
 services:
   bullboard:
     container_name: bullboard
-    image: deadly0/bull-board
+    image: kunwarsaab/bull-board
     restart: always
     ports:
       - 3000:3000
@@ -38,7 +40,12 @@ see "Example with docker-compose" section for example with env parameters
 * `PROXY_PATH` - proxyPath for bull board, e.g. https://<server_name>/my-base-path/queues [docs] ('' by default)
 * `USER_LOGIN` - login to restrict access to bull-board interface (disabled by default)
 * `USER_PASSWORD` - password to restrict access to bull-board interface (disabled by default)
-
+* `BOARD_TITLE`: text for changing the default title of the board,
+*	`BOARD_LOGO` : url of logo to be used instead of default one,
+*	`BOARD_WIDTH` : css for logo,
+*	`BOARD_HEIGHT` : css for logo,
+*	`FAVICON_DEFAULT` : default favicon, if configuration is needed,
+*	`FAVICON_ALTERNATIVE` : alternative favicon, if configuration is needed,
 
 ### Restrict access with login and password
 
@@ -62,7 +69,7 @@ services:
 
   bullboard:
     container_name: bullboard
-    image: deadly0/bull-board
+    image: kunwarsaab/bull-board
     restart: always
     ports:
       - 3000:3000

@@ -10,7 +10,6 @@ const session = require("express-session");
 const passport = require("passport");
 const { ensureLoggedIn } = require("connect-ensure-login");
 const bodyParser = require("body-parser");
-
 const { authRouter } = require("./login");
 const config = require("./config");
 
@@ -32,11 +31,12 @@ const { setQueues } = createBullBoard({
 	options: {
 		uiConfig: {
 			boardTitle: config.BOARD_TITLE,
-			boardLogo: {
-				path: config.BOARD_LOGO,
-				width: config.BOARD_WIDTH ?? "100px",
-				height: config.BOARD_HEIGHT ?? 200,
-			},
+			// If somehow I want to change only logo, whole default style will not take place?! bad decision? maybe
+			// boardLogo: {
+				// path: config.BOARD_LOGO,
+				// width: config.BOARD_WIDTH,
+				// height: config.BOARD_HEIGHT,
+			// },
 			favIcon: {
 				default: config.FAVICON_DEFAULT,
 				alternative: config.FAVICON_ALTERNATIVE,
@@ -112,7 +112,7 @@ if (config.AUTH_ENABLED) {
 
 app.listen(config.PORT, () => {
 	console.log(
-		`bull-board is started http://localhost:${config.PORT}${config.HOME_PAGE}`
+		`🚀 bull-board is started http://localhost:${config.PORT}${config.HOME_PAGE}`
 	);
-	console.log(`bull-board is fetching queue list, please wait...`);
+	console.log(`✨ bull-board is fetching queue list, please wait... ✨`);
 });
